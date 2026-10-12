@@ -43,10 +43,14 @@ export async function runLoader(critical: string[]) {
 
 const AGE_KEY = 'grow-age-ok';
 
-/** Resolves once the visitor confirms they are of legal drinking age. */
-export function ageGate(): Promise<void> {
+/**
+ * Resolves once the visitor confirms they are of legal drinking age.
+ * `onAccept` runs synchronously inside the click so it can start audio.
+ * Resolves `true` if the gate was shown, `false` for returning visitors.
+ */
+export function ageGate(onAccept?: () => void): Promise<boolean> {
   const gate = $('#agegate')!;
-  if (storage.get(AGE_KEY) === '1') return Promise.resolve();
+  if (storage.get(AGE_KEY) === '1') return Promise.resolve(false);
 
   gate.hidden = false;
   document.body.classList.add('is-locked');
@@ -63,11 +67,12 @@ export function ageGate(): Promise<void> {
         return;
       }
       storage.set(AGE_KEY, '1');
+      onAccept?.();
       gate.classList.add('is-leaving');
       document.body.classList.remove('is-locked');
       await wait(600);
       gate.hidden = true;
-      resolve();
+      resolve(true);
     });
   });
 }
