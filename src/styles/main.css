@@ -316,7 +316,7 @@ em { font-style: italic; }
 .hero__progress button.is-active::after { animation: progress var(--dur, 5s) linear forwards; }
 @keyframes progress { to { transform: scaleX(1); } }
 
-.scroll-hint { position: absolute; z-index: 5; right: var(--gutter); bottom: 28px; width: 22px; height: 36px; border: 1px solid rgba(255,255,255,0.5); border-radius: 12px; }
+.scroll-hint { position: absolute; z-index: 5; right: var(--gutter); bottom: 160px; width: 22px; height: 36px; border: 1px solid rgba(255,255,255,0.5); border-radius: 12px; }
 .scroll-hint span { position: absolute; left: 50%; top: 7px; width: 2px; height: 7px; margin-left: -1px; background: #fff; border-radius: 2px; animation: scrollHint 1.8s var(--ease) infinite; }
 @keyframes scrollHint { 0% { transform: translateY(0); opacity: 1; } 80% { transform: translateY(12px); opacity: 0; } 100% { opacity: 0; } }
 
@@ -550,7 +550,7 @@ em { font-style: italic; }
 /* =========================================================
    MUSIC TOGGLE
    ========================================================= */
-.sound-dock { position: fixed; z-index: 420; right: 16px; bottom: 16px; display: flex; gap: 8px; animation: fadeIn 1s 2.5s backwards; }
+.sound-dock { position: fixed; z-index: 420; right: 24px; bottom: 80px; display: flex; gap: 8px; animation: fadeIn 1s 2.5s backwards; }
 .track { display: flex; align-items: center; gap: 8px; height: 48px; padding: 0 16px 0 14px; border-radius: 999px; background: color-mix(in srgb, var(--bg) 70%, transparent); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); border: 1px solid var(--line); color: var(--ink); font-family: var(--serif); font-size: 15px; font-style: italic; letter-spacing: 0.04em; transition: border-color 0.4s, background 0.6s; }
 .track:hover { border-color: var(--gold-2); }
 .track svg { width: 16px; height: 16px; fill: none; stroke: var(--gold-2); stroke-width: 1.5; transition: transform 0.6s var(--ease-out); }
@@ -570,7 +570,8 @@ em { font-style: italic; }
 @media (max-width: 760px) {
   .sound { width: 48px; padding: 0; justify-content: center; }
   .sound__label { display: none; }
-  .events { bottom: 76px; } /* sit above the music dock */
+  .sound-dock { right: 16px; bottom: 56px; }
+  .events { bottom: 116px; } /* sit above the music dock */
   .track { padding: 0 14px 0 12px; font-size: 14px; }
 }
 
