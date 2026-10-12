@@ -2,6 +2,7 @@ import './styles/main.css';
 import { $ } from './modules/utils';
 import { initSplitText } from './modules/splitText';
 import { initTheme } from './modules/theme';
+import { initSound } from './modules/sound';
 import { initSmoothScroll } from './modules/smoothScroll';
 import { ageGate, runLoader } from './modules/loader';
 import { heroCritical, initHero } from './modules/hero';
@@ -23,6 +24,7 @@ window.scrollTo(0, 0);
 $('#year')!.textContent = String(new Date().getFullYear());
 
 initTheme();
+const sound = initSound();
 initSplitText();
 const hero = initHero();
 initSmoothScroll();
@@ -43,7 +45,8 @@ initNewsletter();
 
 (async () => {
   await runLoader(heroCritical());
-  await ageGate();
+  const gateShown = await ageGate(() => sound.unlock());
+  if (!gateShown) sound.armFirstInteraction();
   hero.start();
   initReveal();
   initEvents();

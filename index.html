@@ -461,6 +461,19 @@
     </div>
   </aside>
 
+  <!-- ================= MUSIC TOGGLE ================= -->
+  <!-- to use your own track: add data-src="/audio/your-track.mp3" (file in public/audio/) -->
+  <div class="sound-dock">
+    <button class="track" id="trackToggle" aria-label="Switch music">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 18V5l11-2v13" /><circle cx="6" cy="18" r="3" /><circle cx="17" cy="16" r="3" /></svg>
+      <span class="track__name">Bach</span>
+    </button>
+    <button class="sound" id="soundToggle" aria-pressed="false" aria-label="Play music" data-magnetic>
+      <span class="sound__bars" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
+      <span class="sound__label">Sound</span>
+    </button>
+  </div>
+
   <!-- ================= PRODUCT OVERLAY ================= -->
   <div class="product" id="product" aria-hidden="true">
     <button class="product__close" aria-label="Close product">×</button>
